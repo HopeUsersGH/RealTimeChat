@@ -10,8 +10,8 @@
   "license": "ISC",
   "description": "Real time chat for my interview",
   "dependencies": {
-    "express": "^4.21.2",
-    "socket.io": "^4.8.1"
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

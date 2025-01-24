@@ -4,18 +4,17 @@ const socketIO = require('socket.io');
 const fs = require('fs');
 
 const app = express();
-const server = http.Server(app);
+const server = http.createServer(app);
 const PORT = process.env.PORT || 3000;
-
 const io = socketIO(server);
 
 let usersData = [];
 fs.readFile('./client/users.json', 'utf8', (err, data) => {
-    if (err) {
-        console.error('Error reading users data:', err);
-        return;
-    }
-    usersData = JSON.parse(data);  
+  if (err) {
+    console.error('Error reading users data:', err);
+    return;
+  }
+  usersData = JSON.parse(data);  
 });
 
 app.get('/', (req, res) => {
@@ -24,17 +23,16 @@ app.get('/', (req, res) => {
 
 app.use(express.static('./client'));
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 const DEFAULT_ROOM = 'general';
-
 //array "roomList" of objects(rooms)
 let roomList = [];
 
-io.on('connection', socket => {
-
+io.on('connection', (socket) => {
+    socket.emit('set username', socket.id);
     socket.on('login', username => {
         for (let i = 0; i < usersData.length; i++) {
             if (usersData[i].username === username) {
@@ -57,7 +55,7 @@ io.on('connection', socket => {
                     roomList.push(room);
                 }
 
-                if(!room.users.uncludes(socket.username)) {
+                if (!room.users.includes(socket.username)) {
                     room.users.push(socket.username);
                 }
 
@@ -99,3 +97,4 @@ io.on('connection', socket => {
         }
     });
 });
+    
