@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>RealTime Chat</title>
+    <link rel="stylesheet" href="./styles/styles.css"/>
+</head>
+<body>
+    <header class="header">
+        <div class="header__inner container">
+            <form class="header__search-form form" id="searchForm">
+                <div class="search-form__field field">
+                    <label for="search" class="label__input visually-hidden"></label>
+                    <input 
+                        class="field__input"
+                        type="text"
+                        id="searchInput"
+                        name="search"
+                        placeholder="enter nickname"
+                    />
+                </div>
+                <button type="submit" class="search-form__button button" id="searchButton">Search</button>
+            </form>
+        </div>    
+    </header>
+    <aside class="aside-rooms">
+        <div class="aside-rooms__header">
+            <h2>NickName</h2>
+        </div>
+        <div class="aside-rooms__body">
+            <div class="rooms">
+                <ul class="rooms-list">
+                    <li class="rooms-item">
+                        <div class="room-item__title"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <main class="content">
+        <section class="section container">
+            <div class="section__body">
+                <div class="chat">
+                </div>
+            </div>
+        </section>
+    </main>
+    <aside class="aside-users">
+        <div class="aside-users__header">
+            <h2>Users</h2>
+        </div>
+        <div class="aside-users__body">
+            <div class="users">
+                <ul class="users-list">
+                    <li class="users-item">
+                        <div class="users-item__title"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+</body>
+</html>
