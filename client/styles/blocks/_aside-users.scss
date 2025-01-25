@@ -1,0 +1,13 @@
+.aside-users {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    &__body {
+        overflow-y: auto;
+    }
+}
+
+.users {
+    font-size: 26px;
+}

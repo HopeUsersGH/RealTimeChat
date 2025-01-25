@@ -1,0 +1,14 @@
+.header {
+    margin-bottom: var(--margin-inner);
+    position: relative;
+
+    & .result-searching {
+        display: none;
+        position: absolute;
+        width: 100%;
+        padding: 15px 20px;
+        border: var(--border);
+        border-radius: var(--border-radius);
+        background-color: var(--color-light);
+    }
+}

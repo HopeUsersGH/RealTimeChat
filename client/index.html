@@ -4,120 +4,156 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>RealTime Chat</title>
+    <link rel="shortcut icon" href="./favicon.png">
     <link rel="stylesheet" href="./styles/styles.css"/>
 </head>
 <body>
-    <header class="header">
+    <header id="header" class="header">
         <div class="header__inner container">
             <form class="header__search-form form" id="searchForm">
                 <div class="search-form__field field">
                     <label for="search" class="label__input visually-hidden"></label>
                     <input 
-                        class="field__input"
+                        class="field__input field__input--padding-right"
                         type="text"
                         id="searchInput"
                         name="search"
-                        placeholder="enter nickname"
+                        placeholder="Enter any username"
                     />
                 </div>
-                <button type="submit" class="search-form__button button" id="searchButton">Search</button>
+                <button type="submit" class="search-form__button button button--icon" id="searchButton">
+                    <svg width="30px" height="30px" viewBox="0 -0.5 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="Dribbble-Light-Preview" transform="translate(-179.000000, -280.000000)" fill="#000000">
+                                <g id="icons" transform="translate(56.000000, 160.000000)">
+                                    <path d="M128.93985,132.929 L130.42455,134.343 L124.4847,140 L123,138.586 L128.93985,132.929 Z M136.65,132 C133.75515,132 131.4,129.757 131.4,127 C131.4,124.243 133.75515,122 136.65,122 C139.54485,122 141.9,124.243 141.9,127 C141.9,129.757 139.54485,132 136.65,132 L136.65,132 Z M136.65,120 C132.5907,120 129.3,123.134 129.3,127 C129.3,130.866 132.5907,134 136.65,134 C140.7093,134 144,130.866 144,127 C144,123.134 140.7093,120 136.65,120 L136.65,120 Z" id="search_right-[#1507]"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
             </form>
-        </div>
-    </header>
-    <aside class="aside-rooms">
-        <div class="aside-rooms__header">
-            <h2>NickName</h2>
-        </div>
-        <div class="aside-rooms__body">
-            <div class="rooms">
-                <ul class="rooms-list">
-                    <li class="rooms-item">
-                        <div class="room-item__title"></div>
-                    </li>
+            <div class="result-searching" id="resultSearching">
+                <ul class="users-list" id="userSearch">
                 </ul>
             </div>
         </div>
-        <form class="join-room-form form" id="joinRoomForm">
-            <label for="joinRoom" class="label__input visually-hidden"></label>
-            <input 
-                class="field__input"
-                type="text"
-                id="joinRoom"
-                name="joinRoom"
-                placeholder="Enter a user name"
-                autocomplete="off"
-            />
+    </header>
+    <main id="content" class="content">
+        <aside class="aside-rooms aside">
+            <div class="aside-rooms__header">
+                <h2 id="username">NickName</h2>
             </div>
-            <button type="submit" class="join-room-form__button button" id="joinRoomButton">Enter</button>
-        </form>
-    </aside>
-    <main class="content">
+            <div class="aside-rooms__body">
+                <div class="rooms">
+                    <ul class="rooms-list" id="rooms">
+                    </ul>
+                </div>
+            </div>
+            <form class="join-room-form form" id="joinRoomForm">
+                <label for="joinRoom" class="label__input visually-hidden"></label>
+                <input 
+                    class="field__input field__input--padding-right field__input--dark"
+                    type="text"
+                    id="joinRoom"
+                    name="joinRoom"
+                    placeholder="Enter a room"
+                    autocomplete="off"
+                />
+                </div>
+                <button type="submit" class="join-room-form__button button button--icon" id="joinRoomButton">
+                    <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 12C20 7.58172 16.4183 4 12 4M12 20C14.5264 20 16.7792 18.8289 18.2454 17" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M4 12H14M14 12L11 9M14 12L11 15" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </form>
+        </aside>
         <section class="section container">
             <div class="section__body">
                 <div class="chat">
-                    <article>
-                        <pre></pre>
+                    <article class="chat-messages">
+                        <div id="messages"></div>
                     </article>
                     <div class="chat-typing__inner">
-                        <pre class="chat-typing" id="typingStatus"></pre>
+                        <div class="chat-typing" id="typingStatus"></div>
                         <form class="chat-form form" id="messageForm">
                             <label for="message" class="label__input visually-hidden"></label>
                             <input 
-                                class="field__input"
+                                class="field__input field__input--padding-right"
                                 type="text"
                                 id="message"
                                 name="message"
                                 placeholder="Type a message"
+                                autocomplete="off"
                             />
-                        </div>
-                        <button type="submit" class="chat-form__button button" id="chatButton">Enter</button>
+                            <button type="submit" class="chat-form__button button button--icon" id="chatButton">
+                                <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 14L13 21L20 4L3 11L6.5 12.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
+        <aside class="aside-users aside">
+            <div class="aside-users__header">
+                <h2>Online</h2>
+            </div>
+            <div class="aside-users__body">
+                <div class="users">
+                    <ul class="users-list" id="userList">
+                    </ul>
+                </div>
+            </div>
+            <form class="remove-user-form form" id="removeUserForm">
+                <label for="removeUser" class="label__input visually-hidden"></label>
+                <input 
+                    class="field__input field__input--padding-right field__input--dark"
+                    type="text"
+                    id="removeUser"
+                    name="removeUser"
+                    placeholder="Enter a username"
+                />
+                </div>
+                <button type="submit" class="remove-user-form__button button button--icon" id="removeButton">
+                    <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 12V17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M14 12V17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M4 7H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </form>
+        </aside>
     </main>
-    <aside class="aside-users">
-        <div class="aside-users__header">
-            <h2>Users</h2>
-        </div>
-        <div class="aside-users__body">
-            <div class="users">
-                <ul class="users-list">
-                    <li class="users-item">
-                        <div class="users-item__title" id="username"></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <form class="remove-user-form form" id="removeUserForm">
-            <label for="removeUser" class="label__input visually-hidden"></label>
-            <input 
-                class="field__input"
-                type="text"
-                id="removeUser"
-                name="removeUser"
-                placeholder="Enter a user name"
-            />
-            </div>
-            <button type="submit" class="remove-user-form__button button" id="removeButton">Enter</button>
-        </form>
-    </aside>
+
+    <section class="login" id="login">
+        <button class="login-button button" onclick="loginOverlay.showModal()" id="authButton">Login</button>
+    </section>
 
     <dialog class="login-overlay" id="loginOverlay">
-        <form class="login-overlay form">
+        <h2>Authorization</h2>
+        <form class="login-overlay__form form" id="loginForm">
             <label for="login" class="label__input visually-hidden"></label>
             <input 
-                class="field__input"
+                class="field__input field__input--padding-right"
                 type="text"
                 id="login"
                 name="login"
-                placeholder="Enter your nickname"
+                placeholder="Enter your username"
+                value="Earline.Crona" 
                 required
             />
             </div>
-            <button type="submit" class="login-form__button button" id="loginButton">Login</button>
-        
+            <button type="submit" class="login-form__button button button--icon" id="loginButton">
+                <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 12C20 7.58172 16.4183 4 12 4M12 20C14.5264 20 16.7792 18.8289 18.2454 17" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                    <path d="M4 12H14M14 12L11 9M14 12L11 15" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
         </form>
     </dialog>
 

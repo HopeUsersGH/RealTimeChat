@@ -1,0 +1,11 @@
+.header{
+    display: none;
+}
+
+.content {
+    height: calc(100vh - var(--padding-body)*2 - var(--input-height) - var(--margin-inner));
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: var(--margin-inner);
+}

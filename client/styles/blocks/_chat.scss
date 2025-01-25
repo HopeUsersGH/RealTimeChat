@@ -1,0 +1,30 @@
+.chat {
+    
+    &-messages {
+        font-size: 20px;
+        max-height: 660px;
+        overflow-y: auto;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &-typing {
+        position: absolute;
+        top: -45%;
+        left: 20px;
+        color: var(--color-dark-alt);
+
+        &__inner {
+            position: relative;
+        }
+    }
+    
+}
+
+.system-message {
+    font-weight: 600;
+    font-style: italic;
+}

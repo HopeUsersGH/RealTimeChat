@@ -1,0 +1,33 @@
+.button {
+    @include flex-center;
+
+    padding-inline: 20px;
+    height: var(--button-height);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    font-size: 20px;
+    background-color: var(--color-light);
+    cursor: pointer;
+
+    @include hover {
+        color: var(--color-light);
+        border-color: var(--color-accent);
+        background-color: var(--color-accent);
+    }
+
+    &--icon {
+        @include square(48px);
+
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        padding: 0;
+        background-color: transparent;
+        color: var(--color-dark-alt);
+
+        @include hover {
+            color: var(--color-accent);
+            background-color: transparent;
+        }
+    }
+}
